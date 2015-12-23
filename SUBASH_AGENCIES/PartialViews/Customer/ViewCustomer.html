@@ -1,0 +1,59 @@
+﻿<div>
+    <h2>{{heading}} </h2>
+    <table>
+        <tr>
+            <td><label>Outlet Name:</label> </td>
+            <td><input type="text" ng-model="Outlet"/> </td>
+        </tr>
+        <td colspan="2">
+            <input type="submit" value="Save" ng-click="pulloutlets(Outlet)" />
+        </td>
+    </table>
+    <!--<table>
+        <tr>
+            <td><label>Customer Name:</label> </td>            
+        
+            <td><label>Outlet Name:</label> </td>            
+        </tr>
+    </table>-->
+    <table>
+        <thead>
+            <tr style="border-color:black;border-style:solid">
+                <td><label>ID</label> </td>
+                <td><label>NAME</label> </td>
+                <td><label>OUTLET_NAME</label> </td>
+                <td><label>CATEGORYNAME</label> </td>
+                <td><label>TYPENAME</label> </td>
+                <td><label>BEATNAME</label> </td>
+                <!--<td><label>ADDRESS1</label> </td>
+        <td><label>ADDRESS2</label> </td>
+        <td><label>LANDLINE</label> </td>
+        <td><label>MOBILE</label> </td>
+        <td><label>EMAIL_ADDRESS</label> </td>
+        <td><label>OTHER_DETAILS</label> </td>
+        <td><label>CITYNAME</label> </td>
+        <td><label>PINCODE</label> </td>
+        <td><label>STATUS</label> </td>-->
+            </tr>
+        </thead>
+        <tbody ng-repeat="outletdata in outletlist">
+            <tr style="border-color:black;border-style:solid">
+                <td><button ng-click="editCustomer(outletdata.ID)" >{{outletdata.ID}}</button> </td>
+                <td><label>{{outletdata.NAME}}</label> </td>
+                <td><label>{{outletdata.OUTLET_NAME}}</label> </td>
+                <td><label>{{outletdata.CATEGORYNAME}}</label> </td>
+                <td><label>{{outletdata.TYPENAME}}</label> </td>
+                <td><label>{{outletdata.BEATNAME}}</label> </td>
+                <!--<td><label>{{outletdata.ADDRESS1}}</label> </td>
+            <td><label>{{outletdata.ADDRESS2}}</label> </td>
+            <td><label>{{outletdata.LANDLINE}}</label> </td>
+            <td><label>{{outletdata.MOBILE}}</label> </td>
+            <td><label>{{outletdata.EMAIL_ADDRESS}}</label> </td>
+            <td><label>{{outletdata.OTHER_DETAILS}}</label> </td>
+            <td><label>{{outletdata.CITYNAME}}</label> </td>
+            <td><label>{{outletdata.PINCODE}}</label> </td>
+            <td><label>{{outletdata.STATUS}}</label> </td>-->
+            </tr>
+        </tbody>
+    </table>
+</div>

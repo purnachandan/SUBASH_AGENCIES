@@ -1,0 +1,35 @@
+www.rachelappel.com
+
+SQL Server Authentication Details:
+===================================
+Service										Account Name							Password			Startup Type
+======================================================================================================================
+SQL Server Database Engine				NT Service\MSSQL$SQLEXPRESS			
+SQL Server Reporting Services				NT Service\ReportServer$SQLEXPRESS
+SQL Full-text Filter Daemon Launcher		NT Service\MSSQLFDLauncher$SQLEXPRESS
+SQL Server Browser							NT AUTHORITY\LOCAL SERVICE
+
+
+
+
+	User Database Directory: C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Data
+User Database Log Directory: C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Data
+		Temp DB Directory:		C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Data
+	Temp DB Log Directory:	C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Data
+		Backup Directory:		C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\Backup
+
+SUBASH AGENCIES (DB File):   C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\
+SUBASH AGENCIES (Log File):  C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\
+
+
+
+
+input[type="submit"], input[type="button"], button {
+    background-color: #d3dce0;
+    border: 1px solid #787878;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 7px;
+    margin-right: 8px;
+    width: auto;

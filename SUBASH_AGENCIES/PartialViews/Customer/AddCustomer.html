@@ -1,0 +1,164 @@
+﻿<div>
+    <h2>{{heading}} </h2>
+    <!--<h2>{{customer}}</h2>-->
+    <table>
+        <!--<tr>
+            <td><label>name</label> </td>
+            <td colspan="2"><input type="text" ng-model="name" /> {{ name }}</td>
+            <td ng-init="names1=['Saichandan','Bharath','Harshini']">
+                <ul>
+                    <li ng-repeat="names in names1 | filter: name | orderBy:'name'"> {{names | uppercase}}</li>
+                </ul>
+            </td>
+        </tr>-->
+        <tr>
+            <td><label>Customer Name:</label> </td>
+            <td><input type="text" value="{{customer.NAME}}" ng-model="customer.NAME" /></td>
+        </tr>
+        <tr>
+            <td><label>Outlet Name:</label> </td>
+            <td><input type="text" value="{{customer.OUTLET_NAME}}" ng-model="customer.OUTLET_NAME"/> </td>
+        </tr>
+        <tr>
+            <td><label>Category</label> </td>
+            <td>
+                <select ng-options="cate.CATEGORYID as cate.CATEGORYNAME for cate in category" ng-model="customer.CATEGORYID"></select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Type</label></td>
+            <td>
+                <select ng-options="typ.TYPEID as typ.TYPENAME for typ in type" ng-model="customer.TYPEID">                    
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Beat</label></td>
+            <td>
+                <select ng-options="bt.BEATID as bt.BEATNAME for bt in beat" ng-model="customer.BEATID">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Address1:</label> </td>
+            <td><input type="text" value="{{customer.ADDRESS1}}" ng-model="customer.ADDRESS1" /></td>
+        </tr>
+        <tr>
+            <td><label>Address2:</label> </td>
+            <td><input type="text" value="{{customer.ADDRESS2}}" ng-model="customer.ADDRESS2" /></td>
+        </tr>
+        <tr>
+            <td><label>LandLine:</label> </td>
+            <td><input type="text" value="{{customer.LANDLINE}}" ng-model="customer.LANDLINE"/></td>
+        </tr>
+        <tr>
+            <td><label>Mobile:</label> </td>
+            <td><input type="text" value="{{customer.MOBILE}}" ng-model="customer.MOBILE" /></td>
+        </tr>
+        <tr>
+            <td><label>Email Address:</label> </td>
+            <td><input type="text" value="{{customer.EMAIL_ADDRESS}}" ng-model="customer.EMAIL_ADDRESS"/></td>
+        </tr>
+        <tr>
+            <td><label>Other Details:</label> </td>
+            <td><input type="text" value="{{customer.OTHER_DETAILS}}" ng-model="customer.OTHER_DETAILS"/></td>
+        </tr>
+        <tr>
+            <td><label>City</label></td>
+            <td>
+                <select ng-options="ct.CITYID as ct.CITYNAME for ct in city" ng-model="customer.CITYID">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>PinCode</label></td>
+            <td>
+                <select ng-options="pincod.PINCODEID as pincod.PINCODE for pincod in pincode" ng-model="customer.PINCODEID">                    
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Status</label></td>
+            <td>
+                <select ng-options="stat.STATUSID as stat.STATUSCODE for stat in status" ng-model="customer.STATUSID">                
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Save" ng-click="AddUpdateCustomer()"/>
+            </td>
+        </tr>
+        <!--<tr>
+            <td>@Html.LabelFor(m => m.NAME) </td>
+            <td colspan="2">@Html.EditorFor(m => m.NAME) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.OUTLETNAME)</td>
+            <td>@Html.EditorFor(m => m.OUTLETNAME) </td>
+            <td>@Html.ValidationMessageFor(m => m.OUTLETNAME) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.CATEGORYID) </td>
+            <td>@Html.DropDownList("CATEGORYID") </td>
+            <td>@Html.ValidationMessageFor(m => m.CATEGORYID) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.TYPEID) </td>
+            <td>@Html.DropDownList("TYPEID")</td>
+            <td>@Html.ValidationMessageFor(m => m.TYPEID)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.BEATID) </td>
+            <td>@Html.DropDownList("BEATID")</td>
+            <td>@Html.ValidationMessageFor(m => m.BEATID)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.ADDRESS1)</td>
+            <td>@Html.EditorFor(m => m.ADDRESS1) </td>
+            <td>@Html.ValidationMessageFor(m => m.ADDRESS1) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.ADDRESS2)</td>
+            <td>@Html.EditorFor(m => m.ADDRESS2) </td>
+            <td>@Html.ValidationMessageFor(m => m.ADDRESS2) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.LANDLINE)</td>
+            <td>@Html.EditorFor(m => m.LANDLINE) </td>
+            <td>@Html.ValidationMessageFor(m => m.LANDLINE) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.MOBILE)</td>
+            <td>@Html.EditorFor(m => m.MOBILE) </td>
+            <td>@Html.ValidationMessageFor(m => m.MOBILE) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.EMAIL_ADDRESS)</td>
+            <td>@Html.EditorFor(m => m.EMAIL_ADDRESS) </td>
+            <td>@Html.ValidationMessageFor(m => m.EMAIL_ADDRESS) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.OTHER_DETAILS)</td>
+            <td>@Html.EditorFor(m => m.OTHER_DETAILS) </td>
+            <td>@Html.ValidationMessageFor(m => m.OTHER_DETAILS) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.CITYID) </td>
+            <td>@Html.DropDownList("CITYID") </td>
+            <td>@Html.ValidationMessageFor(m => m.CITYID) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.PINCODEID) </td>
+            <td>@Html.DropDownList("PINCODEID")</td>
+            <td>@Html.ValidationMessageFor(m => m.PINCODEID)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.STATUSID) </td>
+            <td>@Html.DropDownList("STATUSID")</td>
+            <td>@Html.ValidationMessageFor(m => m.STATUSID)</td>
+        </tr>
+        <br />
+        <br />-->
+    </table>
+</div>
