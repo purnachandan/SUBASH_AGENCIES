@@ -46,15 +46,11 @@ namespace SUBASH_AGENCIES.Controllers
 
         public JsonResult GetCustomer(String sOutlet)
         {
-            Queries qry = new Queries();
-
-            List<CUSTOMERDETAILS> cust = qry.GetOutlets(sOutlet);
-            return Json(cust, JsonRequestBehavior.AllowGet);
+            return Json(objQry.GetOutlets(sOutlet), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCustomerByID(int id)
         {
-            Queries qry = new Queries();
-            return Json(qry.GetCustomer(id), JsonRequestBehavior.AllowGet);
+            return Json(objQry.GetCustomer(id), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCategory()
         {

@@ -23,9 +23,9 @@ namespace Business_Logic_Layer.Models
 
         public string ADDRESS2 { get; set; }
 
-        public long? LANDLINE { get; set; }
+        public string LANDLINE { get; set; }
 
-        public long? MOBILE { get; set; }
+        public string MOBILE { get; set; }
         
         public string EMAIL_ADDRESS { get; set; }
         

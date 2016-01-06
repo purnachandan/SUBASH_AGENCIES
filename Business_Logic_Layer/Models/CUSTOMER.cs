@@ -40,11 +40,11 @@ namespace Business_Logic_Layer.Models
         public string ADDRESS2 { get; set; }
         
         [Display(Name = "LandLine")]
-        public long? LANDLINE { get; set; }
+        public string LANDLINE { get; set; }
         
         [Display(Name = "Mobile")]
         [DataType(DataType.PhoneNumber)]
-        public long? MOBILE { get; set; }
+        public string MOBILE { get; set; }
 
         [Display(Name = "EmailAddress")]
         [DataType(DataType.EmailAddress,ErrorMessage ="Please provide valid Email Address")]

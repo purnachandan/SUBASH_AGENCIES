@@ -46,7 +46,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Business_Logic_Layer">
+    <Reference Include="Business_Logic_Layer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Business_Logic_Layer\bin\Debug\Business_Logic_Layer.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">

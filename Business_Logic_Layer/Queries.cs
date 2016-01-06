@@ -49,8 +49,10 @@ namespace Business_Logic_Layer
                                 BEATNAME = sdr.GetValue(4).ToString(),
                                 ADDRESS1 = sdr.GetValue(5).ToString(),
                                 ADDRESS2 = sdr.GetValue(6).ToString(),
-                                LANDLINE = sdr.IsDBNull(7) ? default(long?) : sdr.GetInt64(7),
-                                MOBILE = sdr.IsDBNull(8) ? default(long?) : sdr.GetInt64(8),
+                                //LANDLINE = sdr.IsDBNull(7) ? default(string?) : sdr.GetValue(7),
+                                //MOBILE = sdr.IsDBNull(8) ? default(string?) : sdr.GetValue(8),
+                                LANDLINE = sdr.GetValue(7).ToString(),
+                                MOBILE = sdr.GetValue(8).ToString(),
                                 EMAIL_ADDRESS = sdr.GetValue(9).ToString(),
                                 OTHER_DETAILS = sdr.GetValue(10).ToString(),
                                 CITYNAME = sdr.GetValue(11).ToString(),
@@ -96,8 +98,10 @@ namespace Business_Logic_Layer
                             cust.BEATID = sdr.GetInt32(5);
                             cust.ADDRESS1 = sdr.GetValue(6).ToString();
                             cust.ADDRESS2 = sdr.GetValue(7).ToString();
-                            cust.LANDLINE = sdr.IsDBNull(8) ? default(long?) : sdr.GetInt64(8);
-                            cust.MOBILE = sdr.IsDBNull(9) ? default(long?) : sdr.GetInt64(9);
+                            //cust.LANDLINE = sdr.IsDBNull(8) ? default(long?) : sdr.GetInt64(8);
+                            //cust.MOBILE = sdr.IsDBNull(9) ? default(long?) : sdr.GetInt64(9);
+                            cust.LANDLINE = sdr.GetValue(8).ToString();
+                            cust.MOBILE = sdr.GetValue(9).ToString();
                             cust.EMAIL_ADDRESS = sdr.GetValue(10).ToString();
                             cust.OTHER_DETAILS = sdr.GetValue(11).ToString();
                             cust.CITYID = sdr.GetInt32(12);
@@ -121,16 +125,16 @@ namespace Business_Logic_Layer
                 sQuery = "INSERT INTO CUSTOMER_MASTER(NAME, OUTLET_NAME, CATEGORYID, TYPEID, BEATID, ADDRESS1, ADDRESS2, " +
                          "LANDLINE, MOBILE, EMAIL_ADDRESS, OTHER_DETAILS, CITYID, PINCODEID, STATUSID) VALUES " +
                          "('" + cust.NAME + "','" + cust.OUTLET_NAME + "'," + cust.CATEGORYID + "," + cust.TYPEID +
-                         "," + cust.BEATID + ",'" + cust.ADDRESS1 + "','" + cust.ADDRESS2 + "'," + cust.LANDLINE +
-                         "," + cust.MOBILE + ",'" + cust.EMAIL_ADDRESS + "','" + cust.OTHER_DETAILS +
+                         "," + cust.BEATID + ",'" + cust.ADDRESS1 + "','" + cust.ADDRESS2 + "','" + cust.LANDLINE +
+                         "','" + cust.MOBILE + "','" + cust.EMAIL_ADDRESS + "','" + cust.OTHER_DETAILS +
                          "'," + cust.CITYID + "," + cust.PINCODEID + "," + cust.STATUSID + ")";
             }
             else
             {
                 sQuery = "UPDATE CUSTOMER_MASTER SET NAME = '" + cust.NAME + "', OUTLET_NAME = '" + cust.OUTLET_NAME +
                          "', CATEGORYID = " + cust.CATEGORYID + ", TYPEID = " + cust.TYPEID + ", BEATID = " + cust.BEATID +
-                         ", ADDRESS1 = '" + cust.ADDRESS1 + "', ADDRESS2 = '" + cust.ADDRESS2 + "', LADNLINE = " + cust.LANDLINE +
-                         ", MOBILE = " + cust.MOBILE + ", EMAIL_ADDRESS = '" + cust.EMAIL_ADDRESS + "', OTHER_DETAILS = '" + cust.OTHER_DETAILS +
+                         ", ADDRESS1 = '" + cust.ADDRESS1 + "', ADDRESS2 = '" + cust.ADDRESS2 + "', LANDLINE = '" + cust.LANDLINE +
+                         "', MOBILE = '" + cust.MOBILE + "', EMAIL_ADDRESS = '" + cust.EMAIL_ADDRESS + "', OTHER_DETAILS = '" + cust.OTHER_DETAILS +
                          "', CITYID = " + cust.CITYID + ", PINCODEID = " + cust.PINCODEID + ", STATUSID = " + cust.STATUSID +
                          " WHERE ID =" + cust.ID; 
             }
