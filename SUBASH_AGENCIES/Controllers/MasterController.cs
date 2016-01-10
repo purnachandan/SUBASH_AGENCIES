@@ -50,7 +50,8 @@ namespace SUBASH_AGENCIES.Controllers
         }
         public JsonResult GetCustomerByID(int id)
         {
-            return Json(objQry.GetCustomer(id), JsonRequestBehavior.AllowGet);
+            //return Json(objQry.GetCustomer(id), JsonRequestBehavior.AllowGet);            
+            return Json(objBL.Customer.Single(m => m.ID.Equals(id)), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCategory()
         {
@@ -68,10 +69,10 @@ namespace SUBASH_AGENCIES.Controllers
         {
             return Json(objBL.City.ToList(), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetPinCode()
-        {
-            return Json(objBL.CityPinCode.ToList(), JsonRequestBehavior.AllowGet);
-        }
+        //public JsonResult GetPinCode()
+        //{
+        //    return Json(objBL.CityPinCode.ToList(), JsonRequestBehavior.AllowGet);
+        //}
         public JsonResult GetStatus()
         {
             return Json(objBL.Status.ToList(), JsonRequestBehavior.AllowGet);

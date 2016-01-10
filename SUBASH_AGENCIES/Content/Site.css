@@ -432,7 +432,7 @@ select, option {
     font-size: 1.1em;
     margin: 5px 0 6px 0;
     padding: 5px;
-    width: 110px;
+    width: 200px;
 }
 
 input, textarea {
@@ -443,6 +443,7 @@ input, textarea {
     margin: 5px 0 6px 0;
     padding: 5px;
     width: 200px;
+    resize:none;
 }
 
 textarea {

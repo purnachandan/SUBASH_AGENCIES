@@ -1,10 +1,8 @@
 ﻿<form ng-app="Customer" ng-controller="customer" name="CustomerMainForm" novalidate>
     <div>
-        @*<h1> {{ mainHeading }}</h1>*@
-        @*<button ng-click="showCustomers()" value="View Customer" type="submit">View Customer</button>*@        
         <div>
-            <a href="#/AddCustomer/0">Add Customer</a>
             <a href="#/ViewCustomer">View Customer</a>
+            <a href="#/AddCustomer/0">Add Customer</a>            
         </div>        
         <div ng-view>
         </div>
@@ -16,103 +14,8 @@
     @*<script src="~/Scripts/angular.intellisense.js"></script>*@
 }
 @section AppJS {
-    @*<script src="~/Scripts/AppJS/Customer.js"></script>*@
-    <script type="text/javascript">
-    var app = angular.module('Customer', ['ngRoute']);
-    app.config(function ($routeProvider) {
-        $routeProvider
-            .when('/ViewCustomer', {
-                templateUrl: '/PartialViews/Customer/ViewCustomer.html',
-                controller: 'ViewCustomer'
-            }).when('/AddCustomer/:customerid', {
-                templateUrl: '/PartialViews/Customer/AddCustomer.html',
-                controller: 'AddCustomer'
-            }).when('/', {
-                templateUrl: '/PartialViews/Customer/ViewCustomer.html',
-                controller: 'ViewCustomer'
-            });
-    });
-    app.controller('ViewCustomer', function ($scope,$http,$location) {
-        $scope.heading = "View Customer details";
-        //$scope.outletdata = {};
-        $scope.outletlist = {};
-        //$scope.OutletsStatus = false;
-        $scope.editCustomer = function (outletid) {
-            //$http.get('/Master/GetCustomerByID?id=' + outletid).success(function (data) {
-            $location.path('/AddCustomer/' + outletid);
-            //});
-        };
-        $scope.pulloutlets = function (Outlet) {
-            $http.get('/Master/GetCustomer?sOutlet=' + Outlet).success(function (data) {
-                $scope.outletlist = data;
-                
-            });
-        };
-    });
-    app.controller('AddCustomer', function ($scope, $routeParams, $http, $window, $location) {
-        $scope.heading = "Add Customer";
-        $scope.id = $routeParams.customerid;
-        $scope.customer = {};        
-        $scope.existingoutlet = false;
-                
-        $scope.pullcustomer = $http.get('/Master/GetCustomerByID?id=' + $scope.id).success(function (data) {
-            $scope.customer = data;
-            if ($scope.id != 0) {
-                $scope.heading = "Update Customer";
-                $scope.existingoutlet = true;
-            }
-            else
-            {
-                $scope.existingoutlet = false;
-            }
-        });        
-        $scope.AddUpdateCustomer = function () {
-            var id = $scope.customer.ID;
-            $http.put('/Master/AddUpdateCustomer', $scope.customer).success(function (data) {
-                if (data == 1) {
-                    if ($scope.id == 0) {
-                        $window.alert('Outlet: ' + $scope.customer.OUTLET_NAME + ' added successfully');                        
-                    }
-                    else {
-                        $window.alert('Outlet: ' + $scope.customer.OUTLET_NAME + ' updated successfully');
-                    }
-                }
-                else {
-                    $window.alert('Unable to add/update the Outlet: ' + $scope.customer.OUTLET_NAME);
-                }
-                $location.path('/');
-            }).error(function (data) {
-                $window.alert('Unable to add/update the customer: ' + $scope.customer.OUTLET_NAME);
-            });            
-        };
-    });
-    app.controller('customer', function ($scope, $http) {
-        //$scope.mainHeading = "Customers Home Page";
-        $scope.beat = {};
-        $scope.category = {};
-        $scope.type = {};
-        $scope.city = {};
-        $scope.pincode = {};
-        $scope.status = {};
-        $scope.category = $http.get('/Master/GetCategory').success(function (data) {
-            $scope.category = data;
-        });
-        $scope.type = $http.get('/Master/GetTypes').success(function (data) {
-            $scope.type = data;
-        });
-        $scope.beat = $http.get('/Master/GetBeat').success(function (data) {
-            $scope.beat = data;
-        });
-        $scope.city = $http.get('/Master/GetCity').success(function (data) {
-            $scope.city = data;
-        });
-        $scope.pincode = $http.get('/Master/GetPinCode').success(function (data) {
-            $scope.pincode = data;
-        });
-        $scope.status = $http.get('/Master/GetStatus').success(function (data) {
-            $scope.status = data;
-        });
-    });
-</script>
+    <script src="~/Scripts/AppJS/Customer/Customer.js"></script>
+    <script src="~/Scripts/AppJS/Customer/ViewCustomer.js"></script>
+    <script src="~/Scripts/AppJS/Customer/AddCustomer.js"></script>
 }
 

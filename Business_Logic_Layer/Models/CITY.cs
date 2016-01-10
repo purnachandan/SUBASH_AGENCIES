@@ -14,5 +14,6 @@ namespace Business_Logic_Layer.Models
         [Key]
         public int CITYID { get; set; }
         public string CITYNAME { get; set; }
+        public string PINCODE { get; set; }
     }
 }

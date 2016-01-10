@@ -15,7 +15,7 @@ namespace Business_Logic_Layer.Models
         public int ID { get; set; }
 
         [Display(Name ="Customer Name")]
-        public string NAME { get; set; }
+        public string CUSTOMER_NAME { get; set; }
 
         [Required]
         [Display(Name = "Outlet Name")]
@@ -57,8 +57,8 @@ namespace Business_Logic_Layer.Models
         public int CITYID { get; set; }
         //public virtual List<CITY> City { get; set; }
              
-        [Display(Name = "Pincode")]
-        public int PINCODEID { get; set; }
+        //[Display(Name = "Pincode")]
+        //public int PINCODEID { get; set; }
         //public virtual List<CITYPINCODE> PinCode { get; set; }
 
         [Display(Name = "Status")]

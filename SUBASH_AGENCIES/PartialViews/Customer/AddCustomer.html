@@ -1,141 +1,188 @@
 ﻿<div>
-        <h2>{{heading}} </h2>
-        <table>            
-            <tr>
-                <td><label>Customer Name:</label> </td>
-                <td>
-                    <input type="text" value="{{customer.NAME}}" ng-model="customer.NAME" name="CustomerName" ng-pattern="/[A-Z0-9a-z-() ]{1,100}/" required />
-                    <span style="color:red" ng-show="CustomerMainForm.$submitted">
-                        <span ng-show="CustomerMainForm.CustomerName.$error.required">
-                            *Customer Name is required
-                        </span>
-                        <span ng-show="CustomerMainForm.CustomerName.$error.pattern">
-                            *Customer Name can contain only alphabets, numbers, hyphen(-) and brackets ()
-                        </span>
+    <h2>{{heading}} </h2>
+    <table>
+        <tr>
+            <td>
+                <label>Customer Name:</label>
+            </td>
+            <td>
+                <input type="text" style="width:300px;" value="{{customer.CUSTOMER_NAME}}" ng-model="customer.CUSTOMER_NAME" name="CustomerName" ng-pattern="/[A-Z0-9a-z-() ]{1,100}/" required />
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                    <span ng-show="CustomerMainForm.CustomerName.$error.required">
+                        *Customer Name is required
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Outlet Name:</label> </td>
-                <td>
-                    <input type="text" value="{{customer.OUTLET_NAME}}" ng-model="customer.OUTLET_NAME" name="OutletName" ng-pattern="/[A-Z0-9a-z-() ]{1,100}/" ng-disabled="existingoutlet" required />
-                    <span style="color:red" ng-show="CustomerMainForm.$submitted">
-                        <span style="color:red" ng-show="CustomerMainForm.OutletName.$error.required">
-                            *Outlet Name is required
-                        </span>
-                        <span ng-show="CustomerMainForm.OutletName.$error.pattern">
-                            *Outlet Name can contain only alphabets, numbers, hyphen(-) and brackets ()
-                        </span>
+                    <span ng-show="CustomerMainForm.CustomerName.$error.pattern">
+                        *Customer Name can contain only alphabets, numbers, hyphen(-) and brackets ()
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Category</label> </td>
-                <td>
-                    <select ng-options="cate.CATEGORYID as cate.CATEGORYNAME for cate in category" ng-model="customer.CATEGORYID"></select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Type</label></td>
-                <td>
-                    <select ng-options="typ.TYPEID as typ.TYPENAME for typ in type" ng-model="customer.TYPEID"></select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Beat</label></td>
-                <td>
-                    <select ng-options="bt.BEATID as bt.BEATNAME for bt in beat" ng-model="customer.BEATID"></select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Address1:</label> </td>
-                <td>
-                    <input type="text" value="{{customer.ADDRESS1}}" name="Address1" ng-model="customer.ADDRESS1" ng-pattern="/[A-Z0-9a-z-() ]{0,80}/" />
-                    <span style="color:red" ng-show="CustomerMainForm.$submitted">                        
-                        <span ng-show="CustomerMainForm.Address1.$error.pattern">
-                            *Address1 can contain only alphabets, numbers, hyphen(-) and brackets ()
-                        </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Outlet Name:</label>
+            </td>
+            <td>
+                <input type="text" style="width:300px;" value="{{customer.OUTLET_NAME}}" ng-model="customer.OUTLET_NAME" name="OutletName" ng-pattern="/[A-Z0-9a-z-() ]{1,100}/" ng-disabled="existingoutlet" required />
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                    <span style="color:red" ng-show="CustomerMainForm.OutletName.$error.required">
+                        *Outlet Name is required
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Address2:</label> </td>
-                <td>
-                    <input type="text" value="{{customer.ADDRESS2}}" name="Address2" ng-model="customer.ADDRESS2" ng-pattern="/[A-Z0-9a-z-() ]{0,80}/" />
-                    <span style="color:red" ng-show="CustomerMainForm.$submitted">
-                        <span ng-show="CustomerMainForm.Address2.$error.pattern">
-                            *Address2 can contain only alphabets, numbers, hyphen(-) and brackets ()
-                        </span>
+                    <span ng-show="CustomerMainForm.OutletName.$error.pattern">
+                        *Outlet Name can contain only alphabets, numbers, hyphen(-) and brackets ()
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td><label>LandLine:</label> </td>
-                <td>
-                    <input type="number" value="{{customer.LANDLINE}}" name="LandLine" ng-model="customer.LANDLINE" ng-pattern="/[0-9]{0,15}/" />
-                    <span style="color:red" ng-show="CustomerMainForm.$submitted">
-                        <span ng-show="CustomerMainForm.LandLine.$error.pattern">
-                            *LandLine can contain only numbers
-                        </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Category</label>
+            </td>
+            <td>
+                <select ng-options="cate.CATEGORYID as cate.CATEGORYNAME for cate in category" ng-model="customer.CATEGORYID">
+                    <option value="">Select</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Type</label>
+            </td>
+            <td>
+                <select ng-options="typ.TYPEID as typ.TYPENAME for typ in type" ng-model="customer.TYPEID">
+                    <option value="">Select</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Beat</label>
+            </td>
+            <td>
+                <select ng-options="bt.BEATID as bt.BEATNAME for bt in beat" ng-model="customer.BEATID">
+                    <option value="">Select</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Address1:</label>
+            </td>
+            <td>
+                <textarea value="{{customer.ADDRESS1}}" name="Address1" ng-model="customer.ADDRESS1" ng-pattern="/[A-Z0-9a-z-() ]{0,80}/" />
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                    <span ng-show="CustomerMainForm.Address1.$error.pattern">
+                        *Address1 can contain only alphabets, numbers, hyphen(-) and brackets ()
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Mobile:</label> </td>
-                <td>
-                    <input type="number" value="{{customer.MOBILE}}" name="Mobile" ng-model="customer.MOBILE" ng-pattern="/[0-9]{10}/" />
-                    <span style="color:red" ng-show="CustomerMainForm.$submitted">
-                        <span ng-show="CustomerMainForm.Mobile.$error.pattern">
-                            *Mobile can contain only numbers
-                        </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Address2:</label>
+            </td>
+            <td>
+                <textarea value="{{customer.ADDRESS2}}" name="Address2" ng-model="customer.ADDRESS2" ng-pattern="/[A-Z0-9a-z-() ]{0,80}/" />
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                    <span ng-show="CustomerMainForm.Address2.$error.pattern">
+                        *Address2 can contain only alphabets, numbers, hyphen(-) and brackets ()
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Email Address:</label> </td>
-                <td>
-                    <input type="email" value="{{customer.EMAIL_ADDRESS}}" name="EmailAddress" ng-model="customer.EMAIL_ADDRESS" />
-                    <span style="color:red" ng-show="CustomerMainForm.$submitted">
-                        <span ng-show="CustomerMainForm.EmailAddress.$error.email">
-                            *please enter valid email address
-                        </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>LandLine:</label>
+            </td>
+            <td>
+                <input type="text" value="{{customer.LANDLINE}}" name="LandLine" ng-model="customer.LANDLINE" ng-pattern="/[0-9]{0,15}/" />
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                    <span ng-show="CustomerMainForm.LandLine.$error.pattern">
+                        *LandLine can contain only numbers
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Other Details:</label> </td>
-                <td>
-                    <input type="text" value="{{customer.OTHER_DETAILS}}" name="OtherDetails" ng-model="customer.OTHER_DETAILS" ng-pattern="/[A-Z0-9a-z-() ]{80}/" />
-                    <span style="color:red" ng-show="CustomerMainForm.$submitted">
-                        <span ng-show="CustomerMainForm.OtherDetails.$error.pattern">
-                            *Other Details can contain only alphabets, numbers, hyphen(-) and brackets ()
-                        </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Mobile:</label>
+            </td>
+            <td>
+                <input type="text" value="{{customer.MOBILE}}" name="Mobile" ng-model="customer.MOBILE" ng-pattern="/[0-9]{10}/" />
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                    <span ng-show="CustomerMainForm.Mobile.$error.pattern">
+                        *Mobile can contain only numbers
                     </span>
-                </td>
-            </tr>
-            <tr>
-                <td><label>City</label></td>
-                <td>
-                    <select ng-options="ct.CITYID as ct.CITYNAME for ct in city" ng-model="customer.CITYID"></select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>PinCode</label></td>
-                <td>
-                    <select ng-options="pincod.PINCODEID as pincod.PINCODE for pincod in pincode" ng-model="customer.PINCODEID"></select>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Status</label></td>
-                <td>
-                    <select ng-options="stat.STATUSID as stat.STATUSCODE for stat in status" ng-model="customer.STATUSID"></select>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="Save" ng-click="CustomerMainForm.$valid && AddUpdateCustomer()" />
-                </td>
-            </tr>
-        </table>
-    </div>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Email Address:</label>
+            </td>
+            <td>
+                <input type="text" style="width:300px;" value="{{customer.EMAIL_ADDRESS}}" name="email" ng-model="customer.EMAIL_ADDRESS" />
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                    <span ng-show="CustomerMainForm.email.$error.email">
+                        *please enter valid email address
+                    </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Other Details:</label>
+            </td>
+            <td>
+                <textarea value="{{customer.OTHER_DETAILS}}" name="OtherDetails" ng-model="customer.OTHER_DETAILS" ng-pattern="/[A-Z0-9a-z-() ]{0,80}/" />
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                    <span ng-show="CustomerMainForm.OtherDetails.$error.pattern">
+                        *Other Details can contain only alphabets, numbers, hyphen(-) and brackets ()
+                    </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>City</label>
+            </td>
+            <td>
+                <select ng-options="ct.CITYID as ct.CITYNAME for ct in city" ng-model="customer.CITYID" ng-change="PlayPinCode(customer.CITYID)">
+                    <option value="">Select</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>PinCode</label>
+            </td>
+            <td>
+                <!--<select ng-options="pincod.PINCODEID as pincod.PINCODE for pincod in pincode" ng-model="customer.PINCODEID">
+                    <option value="">Select</option>
+                </select>-->
+                <input type="text" value="{{PINCODE}}" disabled="disabled"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Status</label>
+            </td>
+            <td>
+                <select ng-options="stat.STATUSID as stat.STATUSCODE for stat in status" ng-model="customer.STATUSID" name="status" required>
+                    <option value="">Select</option>
+                </select>
+                <span style="color:red" ng-show="CustomerMainForm.$submitted">
+                   
+                        <span ng-show="CustomerMainForm.status.$error.required">
+                            *Select Status
+                        </span>                   
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Save" ng-click="CustomerMainForm.$valid && AddUpdateCustomer()" />
+            </td>
+        </tr>
+    </table>
+</div>
 

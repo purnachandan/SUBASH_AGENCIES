@@ -38,6 +38,18 @@ namespace SUBASH_AGENCIES
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrap/css/css").Include(
+                "~/Content/bootstrap/css/bootstrap-theme.css",
+                "~/Content/bootstrap/css/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap/fonts/fonts").Include(
+                "~/Content/bootstrap/fonts/glyphicons-halflings-regular.eot",
+                "~/Content/bootstrap/fonts/glyphicons-halflings-regular.svg",
+                "~/Content/bootstrap/fonts/glyphicons-halflings-regular.ttf",
+                "~/Content/bootstrap/fonts/glyphicons-halflings-regular.woff",
+                "~/Content/bootstrap/fonts/glyphicons-halflings-regular.woff2"));
+            //bundles.Add(new StyleBundle("").Include(
+            //    ""));
         }
     }
 }
