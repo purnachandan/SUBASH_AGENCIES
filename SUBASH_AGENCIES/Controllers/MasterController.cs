@@ -81,5 +81,9 @@ namespace SUBASH_AGENCIES.Controllers
         {
             return objQry.AddOrUpdateCustomer(customer);
         }
+        public int ChangeCustomerStatus(int id, int status)
+        {
+            return objQry.UpdateCustomerStatus(id, status);
+        }
     }
 }

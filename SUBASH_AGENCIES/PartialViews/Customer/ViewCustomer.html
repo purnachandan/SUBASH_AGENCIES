@@ -15,7 +15,7 @@
             <td><label>Outlet Name:</label> </td>
             <td><input type="text" ng-model="Outlet" /> </td>
             <td colspan="2">
-                <input type="submit" value="Pull Outlets" ng-click="pulloutlets(Outlet)" />
+                <input type="submit" value="Pull Outlets" ng-click="pulloutlets(Outlet)" class="glyphicon glyphicon-envelope" />
             </td>
         </tr>
     </table>
@@ -66,7 +66,7 @@
                         <label style="padding-left:20px;">{{outletdata.CITYNAME}}</label>
                     </td>
                     <td id="b1">
-                        <label style="padding-left:20px;">{{outletdata.STATUS}}</label>
+                       <button ng-click="ChangeStatus(outletdata)" style="margin-left:25px;" >{{outletdata.STATUS}}</button>
                     </td>
                 </tr>
             </tbody>

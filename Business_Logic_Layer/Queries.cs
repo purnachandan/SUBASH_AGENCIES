@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business_Logic_Layer.Models;
 using System.Data;
+using System.Globalization;
 
 namespace Business_Logic_Layer
 {
@@ -130,6 +131,28 @@ namespace Business_Logic_Layer
                          " WHERE ID =" + cust.ID; 
             }
             
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source = PC\SQLEXPRESS; Initial Catalog = SUBASHAGENCIES; Integrated Security = True"))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(sQuery, con))
+                    {
+                        return cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        public int UpdateCustomerStatus(int iCustomerID, int iStatus)
+        {
+            string sQuery;
+            sQuery = "UPDATE CUSTOMER_MASTER SET STATUSID = " + ((iStatus == 1) ? 2 : 1) + ", " +
+                     "UPDATED_ON = CONVERT(VARCHAR,'" + DateTime.Now.ToString("yyyy-MM-dd") + "',103) " +
+                     "WHERE ID = " + iCustomerID;
             try
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source = PC\SQLEXPRESS; Initial Catalog = SUBASHAGENCIES; Integrated Security = True"))
