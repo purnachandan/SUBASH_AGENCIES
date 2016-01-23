@@ -1,0 +1,27 @@
+﻿<form ng-app="SalesMan" ng-controller="SalesManController" name="SalesManForm" novalidate>
+    <div>
+        <div>
+            <h1 ng-cloak>{{heading}}</h1>
+            <a href="#/AddSalesMan/0">Add/Update</a>
+            <a href="#/ViewSalesMan">View</a>
+        </div>
+        <div ng-view>
+
+        </div>
+    </div>
+</form>
+@section scripts {
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    @*<script src="~/Scripts/angular.intellisense.js"></script>*@
+}
+@section AppJS {
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+    <script src="~/Scripts/AppJS/SalesMan/SalesMan.js"></script>
+    <script src="~/Scripts/AppJS/SalesMan/ViewSalesMan.js"></script>
+    <script src="~/Scripts/AppJS/SalesMan/AddSalesMan.js"></script>
+}

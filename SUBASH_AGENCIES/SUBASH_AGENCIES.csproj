@@ -225,6 +225,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="PartialViews\SalesMan\AddSalesMan.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -261,6 +262,9 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AppJS\Customer\AddCustomer.js" />
     <Content Include="Scripts\AppJS\Customer\ViewCustomer.js" />
+    <Content Include="Scripts\AppJS\SalesMan\AddSalesMan.js" />
+    <Content Include="Scripts\AppJS\SalesMan\SalesMan.js" />
+    <Content Include="Scripts\AppJS\SalesMan\ViewSalesMan.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -1035,6 +1039,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="PartialViews\Customer\AddCustomer.html" />
     <Content Include="PartialViews\Customer\ViewCustomer.html" />
+    <Content Include="Scripts\svg-assets-cache.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1068,6 +1073,7 @@
     <None Include="readme.txt" />
     <Content Include="Views\Master\Customer.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Master\SalesMan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

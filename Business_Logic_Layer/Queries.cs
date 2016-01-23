@@ -169,5 +169,38 @@ namespace Business_Logic_Layer
                 return -1;
             }
         }
+        public int AddUpdateSalesMan(SALESMAN SalesMan)
+        {
+            string sQuery;
+            if (SalesMan.SALESMANID == 0)
+            {
+                sQuery = "INSERT INTO SALESMAN_MASTER(SALESMAN_NAME, START_DATE) VALUES " +
+                         "('" + SalesMan.SALESMAN_NAME + "'," +
+                         "CONVERT(VARCHAR,'" + SalesMan.START_DATE.ToString("yyyy-MM-dd") + "',103))";
+            }
+            else
+            {
+                sQuery = "UPDATE SALESMAN_MASTER SET SALESMAN_NAME ='" + SalesMan.SALESMAN_NAME + "', " +
+                         "START_DATE = CONVERT(VARCHAR,'" + SalesMan.START_DATE.ToString("yyyy-MM-dd") + "',103), " +
+                         "END_DATE = " + (SalesMan.END_DATE.HasValue ? null : "CONVERT(VARCHAR,'" + SalesMan.START_DATE.ToString("yyyy-MM-dd") + "',103) ") +
+                         "WHERE SALESMANID = " + SalesMan.SALESMANID;
+            }
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source = PC\SQLEXPRESS; Initial Catalog = SUBASHAGENCIES; Integrated Security = True"))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(sQuery, con))
+                    {
+                        return cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
     }
 }

@@ -1,0 +1,62 @@
+﻿<div>
+    <h1>Add/Update SalesMan</h1>
+    <table>
+        <tr>
+            <td>
+                <label>Name:</label>
+            </td>
+            <td>
+                <input type="text" ng-model="SalesMan.SalesMan_Name" name="SalesMan_Name" value="{{SalesMan.SalesMan_Name}}"
+                        ng-pattern="/[A-Z0-9a-z]{1,100}/" required />
+                <span style="color:red" ng-show="SalesManForm.$submitted">
+                    <span ng-show="SalesManForm.SalesMan_Name.$error.required">
+                        *SalesMan Name is required
+                    </span>
+                    <span ng-show="SalesManForm.SalesMan_Name.$error.pattern">
+                        *Only letters and numbers are allowed
+                    </span>
+                </span>
+            </td>
+        <tr>
+        <tr>
+            <td>
+                <label>Start Date:</label>
+            </td>
+            <td>
+                <input type="text" ng-model="SalesMan.Start_Date" name="Start_Date" value="{{SalesMan.Start_Date}}"
+                       ng-pattern="/(([0-2][1-9])|([3][0-1]))-(([0][1-9])|([1][0-2]))-([2][0-9]{3})/" required />
+                <span ng-show="SalesManForm.$submitted" style="color:red;">
+                    <span ng-show="SalesManForm.Start_Date.$error.required">
+                        *Start Date is required
+                    </span>
+                    <span ng-show="SalesManForm.Start_Date.$error.pattern">
+                        *Start Date should be in dd-mm-yyyy format
+                    </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>End Date:</label>
+            </td>
+            <td>
+                <input type="text" ng-model="SalesMan.End_Date" value="{{SalesMan.End_Date}}" name="End_Date"
+                       ng-pattern="/(([0-2][1-9])|([3][0-1]))-(([0][1-9])|([1][0-2]))-([2][0-9]{3})/" 
+                       />
+                <span ng-show="SalesManForm.$submitted" style="color:red;">                    
+                    <span ng-show="SalesManForm.End_Date.$error.pattern">
+                        *End Date should be in dd-mm-yyyy format
+                    </span>                    
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Add SalesMan" ng-click="SalesManForm.$valid && AddSalesMan()" />
+            </td>
+            <td>
+                <input type="button" value="Cancel" />
+            </td>
+        </tr>
+    </table>
+</div>

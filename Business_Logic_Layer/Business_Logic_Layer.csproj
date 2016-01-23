@@ -57,6 +57,7 @@
     <Compile Include="Models\CITYPINCODE.cs" />
     <Compile Include="Models\CUSTOMER.cs" />
     <Compile Include="Models\CUSTOMERDETAILS.cs" />
+    <Compile Include="Models\SALESMAN.cs" />
     <Compile Include="Models\STATUS.cs" />
     <Compile Include="Models\TYPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

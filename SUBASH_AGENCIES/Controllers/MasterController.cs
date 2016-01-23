@@ -85,5 +85,14 @@ namespace SUBASH_AGENCIES.Controllers
         {
             return objQry.UpdateCustomerStatus(id, status);
         }
+        [HttpGet]
+        public ActionResult SalesMan()
+        {
+            return View();
+        }
+        public int AddUpdateSalesMan(SALESMAN SalesMan)
+        {
+            return objQry.AddUpdateSalesMan(SalesMan);
+        }
     }
 }
