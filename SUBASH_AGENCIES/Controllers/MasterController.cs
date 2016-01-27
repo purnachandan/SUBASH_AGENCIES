@@ -94,5 +94,10 @@ namespace SUBASH_AGENCIES.Controllers
         {
             return objQry.AddUpdateSalesMan(SalesMan);
         }
+        public JsonResult PullSalesMan(string SalesManSearchText)
+        {
+            return Json(objQry.GetSalesMan(SalesManSearchText),JsonRequestBehavior.AllowGet) ;
+        }
+        
     }
 }

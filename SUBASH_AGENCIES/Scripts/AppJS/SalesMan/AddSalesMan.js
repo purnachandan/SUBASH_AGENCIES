@@ -1,17 +1,27 @@
-﻿app.controller('AddSalesManController', function ($scope, $window, $routeParams, $http, $location, SalesManService) {
+﻿app.controller('AddSalesManController', function ($scope, $window, $routeParams, $http, $location, $filter, SalesManService) {
     $scope.SalesMan = {
         SalesManId:0,
         SalesMan_Name: '',
         Start_Date: '',
         End_Date: ''
     };
-    if ($routeParams.id > 0) {
+    $scope.Controls = {
+        SubmitButton: 'Add',
+        Heading: 'Add SalesMan',
+        DisableControl: false
+    };
+    if ($routeParams.SalesManId > 0) {
         $scope.SalesMan = {
-            SalesManId: $routeParams.SalesManId,
-            SalesMan_Name: SalesManService.SalesManObj.SalesManName,
-            Start_Date: SalesManService.SalesManObj.Start_Date,
-            End_Date: SalesManService.SalesManObj.End_Date
+            SalesManId: SalesManService.SalesManObj.SalesManId,
+            SalesMan_Name: SalesManService.SalesManObj.SalesMan_Name,
+            Start_Date: (SalesManService.SalesManObj.Start_Date != null) ? $filter('date')(SalesManService.formatDate(SalesManService.SalesManObj.Start_Date), 'dd-MM-yyyy') : SalesManService.SalesManObj.Start_Date,
+            End_Date: (SalesManService.SalesManObj.End_Date != null) ? $filter('date')(SalesManService.formatDate(SalesManService.SalesManObj.End_Date), 'dd-MM-yyyy') : SalesManService.SalesManObj.End_Date
         }
+        $scope.Controls={
+            SubmitButton : 'Update',
+            Heading: 'Update SalesMan',
+            DisableControl: true    
+        };
     }
     $scope.AddSalesMan = function () {
         $http.put('/Master/AddUpdateSalesMan', $scope.SalesMan).success(function (data) {
@@ -30,11 +40,9 @@
         });        
     }
     $scope.Reset = function () {
-        $scope.SalesMan = {
-            SalesManId: 0,
-            SalesMan_Name: '',
-            Start_Date: '',
-            End_Date: ''
-        };
+        $location.path('/ViewSalesMan');
+    }
+    $scope.PrepareDate = function (dt) {
+        return SalesManService.formatDate(dt);
     }
 });

@@ -1,0 +1,67 @@
+﻿<style>
+    .header {
+        background-color: black;
+        color: white;
+    }
+
+    td#b1 {
+        border: 4px solid black;
+    }
+</style>
+
+<div>
+    <h1>View SalesMan </h1>
+    <table>
+        <tr>
+            <td>
+               <label>SalesMan:</label> 
+            </td>
+            <td>
+                <input type="text" ng-model="SalesManSearchText" />
+            </td>
+            <td>
+                <button type="button" ng-click="pullSalesMan()">Submit</button>
+            </td>
+        </tr>
+    </table>
+    <div ng-if="SalesManList.length > 0">
+        <table>
+                <tr style="border-color:black;border-style:solid" class="header">
+                    <td>
+                        <label style="padding-left:20px;text-align:center">Name</label>
+                    </td>
+                    <td>
+                        <label style="padding-left:20px;text-align:center">Start Date</label>
+                    </td>
+                    <td>
+                        <label style="padding-left:20px;text-align:center">End Date</label>
+                    </td>
+                    <td>
+                        <label style="padding-left:20px;text-align:center">View</label>
+                    </td>
+                    <td>
+                        <label style="padding-left:20px;text-align:center">Edit</label>
+                    </td>
+                </tr>
+            <tbody ng-repeat="SalesMan in SalesManList">
+                <tr style="border-color:black;border-style:solid">
+                    <td id="b1">
+                        <label label style="padding-left:20px;">{{SalesMan.SALESMAN_NAME}}</label>
+                    </td>
+                    <td id="b1">
+                        <label label style="padding-left:20px;">{{PrepareDate(SalesMan.START_DATE)}}</label>
+                    </td>
+                    <td id="b1">
+                        <label label style="padding-left:20px;">{{PrepareDate(SalesMan.END_DATE)}}</label>
+                    </td>
+                    <td id="b1">
+                        <button type="button" ng-click="pullBeats(SalesMan.SALESMANID)">View</button>
+                    </td>
+                    <td id="b1">
+                        <button type="button" ng-click="navigateSalesManPage(SalesMan)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+</div>

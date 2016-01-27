@@ -12,6 +12,7 @@
 /// <reference path="angular-sanitize.min.js" />
 /// <reference path="angular-scenario.js" />
 /// <reference path="angular-touch.min.js" />
+/// <reference path="appjs/appjs.js" />
 /// <reference path="appjs/customer/addcustomer.js" />
 /// <reference path="appjs/customer/customer.js" />
 /// <reference path="appjs/customer/viewcustomer.js" />

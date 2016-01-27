@@ -12,5 +12,6 @@ namespace Business_Logic_Layer.Models
         public String SALESMAN_NAME { get; set; }
         public DateTime START_DATE { get; set; }
         public DateTime? END_DATE { get; set; }
+        public DateTime? UPDATED_ON { get; set; }
     }
 }

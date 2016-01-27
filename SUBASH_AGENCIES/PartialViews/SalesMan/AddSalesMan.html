@@ -1,5 +1,5 @@
 ﻿<div>
-    <h1>Add/Update SalesMan</h1>
+    <h1 ng-cloak>{{Controls.Heading}}</h1>
     <table>
         <tr>
             <td>
@@ -23,7 +23,7 @@
                 <label>Start Date:</label>
             </td>
             <td>
-                <input type="text" ng-model="SalesMan.Start_Date" name="Start_Date" value="{{SalesMan.Start_Date}}"
+                <input type="text" ng-model="SalesMan.Start_Date" name="Start_Date" value="{{SalesMan.Start_Date}}" ng-disabled="Controls.DisableControl"
                        ng-pattern="/(([0-2][1-9])|([3][0-1]))-(([0][1-9])|([1][0-2]))-([2][0-9]{3})/" required />
                 <span ng-show="SalesManForm.$submitted" style="color:red;">
                     <span ng-show="SalesManForm.Start_Date.$error.required">
@@ -40,7 +40,7 @@
                 <label>End Date:</label>
             </td>
             <td>
-                <input type="text" ng-model="SalesMan.End_Date" value="{{SalesMan.End_Date}}" name="End_Date"
+                <input type="text" ng-model="SalesMan.End_Date" value="{{SalesMan.End_Date}}" name="End_Date" ng-disabled="!Controls.DisableControl"
                        ng-pattern="/(([0-2][1-9])|([3][0-1]))-(([0][1-9])|([1][0-2]))-([2][0-9]{3})/" 
                        />
                 <span ng-show="SalesManForm.$submitted" style="color:red;">                    
@@ -52,10 +52,10 @@
         </tr>
         <tr>
             <td>
-                <input type="submit" value="Add SalesMan" ng-click="SalesManForm.$valid && AddSalesMan()" />
+                <input type="submit" ng-value="Controls.SubmitButton" ng-click="SalesManForm.$valid && AddSalesMan()" />
             </td>
             <td>
-                <input type="button" value="Cancel" />
+                <input type="button" value="Cancel" ng-click="Reset()" />
             </td>
         </tr>
     </table>

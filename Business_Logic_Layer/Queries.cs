@@ -182,7 +182,8 @@ namespace Business_Logic_Layer
             {
                 sQuery = "UPDATE SALESMAN_MASTER SET SALESMAN_NAME ='" + SalesMan.SALESMAN_NAME + "', " +
                          "START_DATE = CONVERT(VARCHAR,'" + SalesMan.START_DATE.ToString("yyyy-MM-dd") + "',103), " +
-                         "END_DATE = " + (SalesMan.END_DATE.HasValue ? null : "CONVERT(VARCHAR,'" + SalesMan.START_DATE.ToString("yyyy-MM-dd") + "',103) ") +
+                         "END_DATE = " + (SalesMan.END_DATE.HasValue ? "CONVERT(VARCHAR,'" + DateTime.Parse(SalesMan.END_DATE.ToString()).ToString("yyyy-MM-dd") + "',103) " : DBNull.Value.ToString()) + ", " +
+                         "UPDATED_ON = CONVERT(VARCHAR,'" + DateTime.Now.ToString("yyyy-MM-dd") + "',103) " +
                          "WHERE SALESMANID = " + SalesMan.SALESMANID;
             }
 
@@ -200,6 +201,41 @@ namespace Business_Logic_Layer
             catch (Exception ex)
             {
                 return -1;
+            }
+        }
+        public List<SALESMAN> GetSalesMan(string sSalesManSearchText)
+        {
+            List<SALESMAN> salesManList = new List<SALESMAN>();
+            string cmdText = "SELECT  SALESMANID, SALESMAN_NAME, START_DATE, END_DATE " +
+                             "FROM SALESMAN_MASTER " +
+                             "WHERE SALESMAN_NAME LIKE '%" + sSalesManSearchText + "%'";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source = PC\SQLEXPRESS; Initial Catalog = SUBASHAGENCIES; Integrated Security = True"))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(cmdText, con))
+                    {
+                        SqlDataReader sdr;
+                        sdr = cmd.ExecuteReader();
+                        while (sdr.Read())
+                        {
+                            salesManList.Add(new SALESMAN
+                            {
+                                SALESMANID = sdr.GetInt32(0),
+                                SALESMAN_NAME  = sdr.GetValue(1).ToString(),
+                                START_DATE = DateTime.Parse(sdr.GetValue(2).ToString()),
+                                END_DATE = sdr.IsDBNull(3) ? default(DateTime?) : DateTime.Parse(sdr.GetValue(3).ToString()),
+                                UPDATED_ON = null
+                            });
+                        }
+                        return salesManList;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
     }
