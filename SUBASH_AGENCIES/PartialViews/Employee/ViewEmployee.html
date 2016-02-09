@@ -10,21 +10,21 @@
 </style>
 
 <div>
-    <h1>View SalesMan </h1>
+    <h1>View Employee </h1>
     <table>
         <tr>
             <td>
-               <label>SalesMan:</label> 
+               <label>Employee:</label> 
             </td>
             <td>
-                <input type="text" ng-model="SalesManSearchText" />
+                <input type="text" ng-model="EmployeeSearchText" />
             </td>
             <td>
-                <button type="button" ng-click="pullSalesMan()">Submit</button>
+                <button type="button" ng-click="pullEmployee()">Submit</button>
             </td>
         </tr>
     </table>
-    <div ng-if="SalesManList.length > 0">
+    <div ng-if="EmployeeList.length > 0">
         <table>
                 <tr style="border-color:black;border-style:solid" class="header">
                     <td>
@@ -43,22 +43,22 @@
                         <label style="padding-left:20px;text-align:center">Edit</label>
                     </td>
                 </tr>
-            <tbody ng-repeat="SalesMan in SalesManList">
+            <tbody ng-repeat="Employee in EmployeeList">
                 <tr style="border-color:black;border-style:solid">
                     <td id="b1">
-                        <label label style="padding-left:20px;">{{SalesMan.SALESMAN_NAME}}</label>
+                        <label label style="padding-left:20px;">{{Employee.Employee_NAME}}</label>
                     </td>
                     <td id="b1">
-                        <label label style="padding-left:20px;">{{PrepareDate(SalesMan.START_DATE)}}</label>
+                        <label label style="padding-left:20px;">{{PrepareDate(Employee.START_DATE)}}</label>
                     </td>
                     <td id="b1">
-                        <label label style="padding-left:20px;">{{PrepareDate(SalesMan.END_DATE)}}</label>
+                        <label label style="padding-left:20px;">{{PrepareDate(Employee.END_DATE)}}</label>
                     </td>
                     <td id="b1">
-                        <button type="button" ng-click="pullBeats(SalesMan.SALESMANID)">View</button>
+                        <button type="button" ng-click="pullBeats(Employee.EmployeeID)">View</button>
                     </td>
                     <td id="b1">
-                        <button type="button" ng-click="navigateSalesManPage(SalesMan)">Edit</button>
+                        <button type="button" ng-click="navigateEmployeePage(Employee)">Edit</button>
                     </td>
                 </tr>
             </tbody>

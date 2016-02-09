@@ -1,0 +1,94 @@
+﻿<div>
+    <h1 ng-cloak>{{Controls.Heading}}</h1>
+    <table>
+        <tr>
+            <td>
+                <label>Name:</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.Employee_Name" name="Employee_Name" value="{{Employee.Employee_Name}}"
+                        ng-pattern="/[A-Z0-9a-z]{1,100}/" required />
+                <span style="color:red" ng-show="EmployeeForm.$submitted">
+                    <span ng-show="EmployeeForm.Employee_Name.$error.required">
+                        *Employee Name is required
+                    </span>
+                    <span ng-show="EmployeeForm.Employee_Name.$error.pattern">
+                        *Only letters and numbers are allowed
+                    </span>
+                </span>
+            </td>
+        <tr>
+        <tr>
+            <td>
+                <label>Start Date:</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.Start_Date" name="Start_Date" value="{{Employee.Start_Date}}" ng-disabled="Controls.DisableControl"
+                       ng-pattern="/(([0-2][1-9])|([3][0-1]))-(([0][1-9])|([1][0-2]))-([2][0-9]{3})/" id="startDatepicker" required />
+                <span ng-show="EmployeeForm.$submitted" style="color:red;">
+                    <span ng-show="EmployeeForm.Start_Date.$error.required">
+                        *Start Date is required
+                    </span>
+                    <span ng-show="EmployeeForm.Start_Date.$error.pattern">
+                        *Start Date should be in dd-mm-yyyy format
+                    </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>End Date:</label>
+            </td>
+            <td>
+                <input type="text" ng-model="Employee.End_Date" value="{{Employee.End_Date}}" name="End_Date" ng-disabled="!Controls.DisableControl"
+                       ng-pattern="/(([0-2][1-9])|([3][0-1]))-(([0][1-9])|([1][0-2]))-([2][0-9]{3})/"  id="endDatepicker" />
+                <span ng-show="EmployeeForm.$submitted" style="color:red;">                    
+                    <span ng-show="EmployeeForm.End_Date.$error.pattern">
+                        *End Date should be in dd-mm-yyyy format
+                    </span>                    
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Designation:</label>
+            </td>
+            <td>
+                <select ng-model="Employee.Designation" ng-options="Designation.DESIGNATIONNAME for Designation in Designations track by Designation.DESIGNATIONID">
+                    <option value="">----Select----</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Salary: </label>
+            </td>
+            <td>
+                <input type="number" ng-model="Employee.Salary" value="{{Employee.Salary}}" name="Salary" ng-pattern="/([0-9]{4,5})/" required />
+                <span ng-show="EmployeeForm.$submitted" style="color:red;">
+                    <span ng-show="EmployeeForm.Salary.$error.required">
+                        * Please provide the Salary of the Employee
+                    </span>
+                    <span ng-show="EmployeeForm.Salary.$error.pattern">
+                        * Please provide a valid Salary
+                    </span>
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" ng-value="Controls.SubmitButton" ng-click="EmployeeForm.$valid && AddEmployee()" />
+            </td>
+            <td>
+                <input type="button" value="Cancel" ng-click="Reset()" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+        $(function () {
+            $("#startDatepicker").datepicker();
+            $("#endDatepicker").datepicker();
+        });
+</script>

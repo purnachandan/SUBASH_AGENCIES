@@ -8,11 +8,17 @@ using System.Threading.Tasks;
 
 namespace Business_Logic_Layer.Models
 {
-    [Table("CUSTOMERCATEGORY")]
-    public class CATEGORY
+    [Table("CUSTOMER_CATEGORY")]
+    public class CUSTOMER_CATEGORY
     {
         [Key]
         public int CATEGORYID { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
         public string CATEGORYNAME { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? UPDATED_ON { get; set; }
     }
 }

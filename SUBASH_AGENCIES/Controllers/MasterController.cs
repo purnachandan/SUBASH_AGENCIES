@@ -43,28 +43,33 @@ namespace SUBASH_AGENCIES.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public JsonResult GetCustomer(String sOutlet)
         {
             return Json(objQry.GetOutlets(sOutlet), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
         public JsonResult GetCustomerByID(int id)
         {
             //return Json(objQry.GetCustomer(id), JsonRequestBehavior.AllowGet);            
-            return Json(objBL.Customer.Single(m => m.ID.Equals(id)), JsonRequestBehavior.AllowGet);
+            return Json(objBL.Customer.Single(m => m.CUSTOMERID.Equals(id)), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
         public JsonResult GetCategory()
         {
             return Json(objBL.Category.ToList(), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
         public JsonResult GetTypes()
         {
             return Json(objBL.Type.ToList(), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
         public JsonResult GetBeat()
         {
             return Json(objBL.Beat.ToList(), JsonRequestBehavior.AllowGet);
         }
+        [HttpGet]
         public JsonResult GetCity()
         {
             return Json(objBL.City.ToList(), JsonRequestBehavior.AllowGet);
@@ -73,11 +78,12 @@ namespace SUBASH_AGENCIES.Controllers
         //{
         //    return Json(objBL.CityPinCode.ToList(), JsonRequestBehavior.AllowGet);
         //}
+        [HttpGet]
         public JsonResult GetStatus()
         {
             return Json(objBL.Status.ToList(), JsonRequestBehavior.AllowGet);
         }
-        public int AddUpdateCustomer(CUSTOMER customer)
+        public int AddUpdateCustomer(CUSTOMER_MASTER customer)
         {
             return objQry.AddOrUpdateCustomer(customer);
         }
@@ -86,18 +92,23 @@ namespace SUBASH_AGENCIES.Controllers
             return objQry.UpdateCustomerStatus(id, status);
         }
         [HttpGet]
-        public ActionResult SalesMan()
+        public ActionResult Employee()
         {
             return View();
         }
-        public int AddUpdateSalesMan(SALESMAN SalesMan)
+        public int AddUpdateEmployee(EMPLOYEE_MASTER Employee)
         {
-            return objQry.AddUpdateSalesMan(SalesMan);
+            return objQry.AddUpdateEmployee(Employee);
         }
-        public JsonResult PullSalesMan(string SalesManSearchText)
+        [HttpGet]
+        public JsonResult PullEmployee(string EmployeeSearchText)
         {
-            return Json(objQry.GetSalesMan(SalesManSearchText),JsonRequestBehavior.AllowGet) ;
+            return Json(objQry.GetEmployee(EmployeeSearchText),JsonRequestBehavior.AllowGet) ;
         }
-        
+        [HttpGet]
+        public JsonResult GetEmployeeDesignations()
+        {
+            return Json(objQry.GetDesignations(), JsonRequestBehavior.AllowGet);                 
+        }        
     }
 }

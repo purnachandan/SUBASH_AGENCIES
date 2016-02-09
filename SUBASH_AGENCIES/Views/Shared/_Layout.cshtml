@@ -6,8 +6,8 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         
-        @*@Styles.Render("~/Content/bootstrap/css/css")
-        @Styles.Render("~/Content/bootstrap/fonts/fonts")*@
+        @Styles.Render("~/Content/themes/base/css")
+        @*@Styles.Render("~/Content/bootstrap/fonts/fonts")*@
 
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
@@ -51,13 +51,13 @@
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryui")
         @Scripts.Render("~/bundles/jqueryval")
-        <script>
+        @*<script>
             $(document).ready(function () {
                 $(function () {
                     $("#datepicker").datepicker();
                 });
             });        
-        </script>
+        </script>*@
         @*@Scripts.Render("~/bundles/angular")*@
         @RenderSection("scripts", required: false)
         @RenderSection("AppJS", required: false)        

@@ -8,12 +8,23 @@ using System.Threading.Tasks;
 
 namespace Business_Logic_Layer.Models
 {
-    [Table("CUSTOMERBEAT")]
-    public class BEAT
+    [Table("CUSTOMER_BEAT")]
+    public class CUSTOMER_BEAT
     {
         [Key]
         public int BEATID { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
         public string BEATNAME { get; set; }
+
+        [Required]        
+        public int OUTLET_COUNT { get; set; }
+
+        public int? EMPLOYEEID { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? UPDATED_ON { get; set; }
 
         //public virtual List<CUSTOMER> customer { get; set; }
     }

@@ -16,13 +16,13 @@ namespace Business_Logic_Layer
         public List<CUSTOMERDETAILS> GetOutlets(string sOutletName)
         {
             List<CUSTOMERDETAILS> csd = new List<CUSTOMERDETAILS>();
-            string cmdText = "SELECT cust.ID, cust.CUSTOMER_NAME, cust.OUTLET_NAME, " +
+            string cmdText = "SELECT cust.CUSTOMERID, cust.CUSTOMER_NAME, cust.OUTLET_NAME, " +
                              "cate.CATEGORYNAME, beat.BEATNAME, city.CITYNAME, stat.STATUSCODE " +
                              "FROM CUSTOMER_MASTER cust " +
-                             "INNER JOIN CUSTOMERCATEGORY cate on cust.CATEGORYID = cate.CATEGORYID " +                             
-                             "INNER JOIN CUSTOMERBEAT beat on cust.BEATID = beat.BEATID " +
-                             "INNER JOIN CUSTOMERCITY city on cust.CITYID = city.CITYID " +                             
-                             "INNER JOIN CUSTOMERSTATUS stat on cust.STATUSID = stat.STATUSID " +
+                             "INNER JOIN CUSTOMER_CATEGORY cate on cust.CATEGORYID = cate.CATEGORYID " +                             
+                             "INNER JOIN CUSTOMER_BEAT beat on cust.BEATID = beat.BEATID " +
+                             "INNER JOIN CUSTOMER_CITY city on cust.CITYID = city.CITYID " +                             
+                             "INNER JOIN STATUS stat on cust.STATUSID = stat.STATUSID " +
                              "WHERE cust.OUTLET_NAME LIKE '%" + sOutletName + "%'";
             try
             {
@@ -37,8 +37,8 @@ namespace Business_Logic_Layer
                         {
                             csd.Add(new CUSTOMERDETAILS
                             {
-                                ID = sdr.GetInt32(0),
-                                NAME = sdr.GetValue(1).ToString(),
+                                CUSTOMERID = sdr.GetInt32(0),
+                                CUSTOMER_NAME = sdr.GetValue(1).ToString(),
                                 OUTLET_NAME = sdr.GetValue(2).ToString(),
                                 CATEGORYNAME = sdr.GetValue(3).ToString(),
                                 TYPENAME = null,
@@ -65,12 +65,12 @@ namespace Business_Logic_Layer
                 return null;
             }
         }
-        public CUSTOMER GetCustomer(int OutletId)
+        public CUSTOMER_MASTER GetCustomer(int OutletId)
         {
-            CUSTOMER cust = new CUSTOMER();
-            string cmdText = "SELECT ID, CUSTOMER_NAME, OUTLET_NAME, CATEGORYID, TYPEID, BEATID, ADDRESS1, " + 
+            CUSTOMER_MASTER cust = new CUSTOMER_MASTER();
+            string cmdText = "SELECT CUSTOMERID, CUSTOMER_NAME, OUTLET_NAME, CATEGORYID, TYPEID, BEATID, ADDRESS1, " + 
                              "ADDRESS2, LANDLINE, MOBILE, EMAIL_ADDRESS, OTHER_DETAILS, CITYID, STATUSID " +
-                             "FROM CUSTOMER_MASTER WHERE ID= " + OutletId;
+                             "FROM CUSTOMER_MASTER WHERE CUSTOMERID= " + OutletId;
             try
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source = PC\SQLEXPRESS; Initial Catalog = SUBASHAGENCIES; Integrated Security = True"))
@@ -82,7 +82,7 @@ namespace Business_Logic_Layer
                         sdr = cmd.ExecuteReader();
                         while (sdr.Read())
                         {
-                            cust.ID = sdr.GetInt32(0);
+                            cust.CUSTOMERID = sdr.GetInt32(0);
                             cust.CUSTOMER_NAME = sdr.GetValue(1).ToString();
                             cust.OUTLET_NAME = sdr.GetValue(2).ToString();
                             cust.CATEGORYID = sdr.GetInt32(3);
@@ -109,10 +109,10 @@ namespace Business_Logic_Layer
                 return null;
             }
         }
-        public int AddOrUpdateCustomer(CUSTOMER cust)
+        public int AddOrUpdateCustomer(CUSTOMER_MASTER cust)
         {
             string sQuery;
-            if(cust.ID == 0)
+            if(cust.CUSTOMERID == 0)
             {
                 sQuery = "INSERT INTO CUSTOMER_MASTER(CUSTOMER_NAME, OUTLET_NAME, CATEGORYID, TYPEID, BEATID, ADDRESS1, ADDRESS2, " +
                          "LANDLINE, MOBILE, EMAIL_ADDRESS, OTHER_DETAILS, CITYID, STATUSID) VALUES " +
@@ -128,7 +128,7 @@ namespace Business_Logic_Layer
                          ", ADDRESS1 = '" + cust.ADDRESS1 + "', ADDRESS2 = '" + cust.ADDRESS2 + "', LANDLINE = '" + cust.LANDLINE +
                          "', MOBILE = '" + cust.MOBILE + "', EMAIL_ADDRESS = '" + cust.EMAIL_ADDRESS + "', OTHER_DETAILS = '" + cust.OTHER_DETAILS +
                          "', CITYID = " + cust.CITYID + ", STATUSID = " + cust.STATUSID +
-                         " WHERE ID =" + cust.ID; 
+                         " WHERE CUSTOMERID =" + cust.CUSTOMERID; 
             }
             
             try
@@ -152,7 +152,7 @@ namespace Business_Logic_Layer
             string sQuery;
             sQuery = "UPDATE CUSTOMER_MASTER SET STATUSID = " + ((iStatus == 1) ? 2 : 1) + ", " +
                      "UPDATED_ON = CONVERT(VARCHAR,'" + DateTime.Now.ToString("yyyy-MM-dd") + "',103) " +
-                     "WHERE ID = " + iCustomerID;
+                     "WHERE CUSTOMERID = " + iCustomerID;
             try
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source = PC\SQLEXPRESS; Initial Catalog = SUBASHAGENCIES; Integrated Security = True"))
@@ -169,22 +169,24 @@ namespace Business_Logic_Layer
                 return -1;
             }
         }
-        public int AddUpdateSalesMan(SALESMAN SalesMan)
+        public int AddUpdateEmployee(EMPLOYEE_MASTER Employee)
         {
             string sQuery;
-            if (SalesMan.SALESMANID == 0)
+            if (Employee.EMPLOYEEID == 0)
             {
-                sQuery = "INSERT INTO SALESMAN_MASTER(SALESMAN_NAME, START_DATE) VALUES " +
-                         "('" + SalesMan.SALESMAN_NAME + "'," +
-                         "CONVERT(VARCHAR,'" + SalesMan.START_DATE.ToString("yyyy-MM-dd") + "',103))";
+                sQuery = "INSERT INTO EMPLOYEE_MASTER(EMPLOYEE_NAME, START_DATE, DESIGNATIONID, SALARY, STATUSID) VALUES " +
+                         "('" + Employee.EMPLOYEE_NAME + "'," +
+                         "CONVERT(VARCHAR,'" + Employee.START_DATE.ToString("yyyy-MM-dd") + "',103)), " + Employee.DESIGNATIONID + ", " +
+                         Employee.SALARY + ", " + Employee.STATUSID + ")";
             }
             else
             {
-                sQuery = "UPDATE SALESMAN_MASTER SET SALESMAN_NAME ='" + SalesMan.SALESMAN_NAME + "', " +
-                         "START_DATE = CONVERT(VARCHAR,'" + SalesMan.START_DATE.ToString("yyyy-MM-dd") + "',103), " +
-                         "END_DATE = " + (SalesMan.END_DATE.HasValue ? "CONVERT(VARCHAR,'" + DateTime.Parse(SalesMan.END_DATE.ToString()).ToString("yyyy-MM-dd") + "',103) " : DBNull.Value.ToString()) + ", " +
+                sQuery = "UPDATE EMPLOYEE_MASTER SET EMPLOYEE_NAME ='" + Employee.EMPLOYEE_NAME + "', " +
+                         "START_DATE = CONVERT(VARCHAR,'" + Employee.START_DATE.ToString("yyyy-MM-dd") + "',103), " +
+                         "END_DATE = " + (Employee.END_DATE.HasValue ? "CONVERT(VARCHAR,'" + DateTime.Parse(Employee.END_DATE.ToString()).ToString("yyyy-MM-dd") + "',103) " : DBNull.Value.ToString()) + ", " +
+                         "DESIGNATIONID = " + Employee.DESIGNATIONID + ", SALARY = " + Employee.SALARY + ", " +
                          "UPDATED_ON = CONVERT(VARCHAR,'" + DateTime.Now.ToString("yyyy-MM-dd") + "',103) " +
-                         "WHERE SALESMANID = " + SalesMan.SALESMANID;
+                         "WHERE EMPLOYEEID = " + Employee.EMPLOYEEID;
             }
 
             try
@@ -203,12 +205,12 @@ namespace Business_Logic_Layer
                 return -1;
             }
         }
-        public List<SALESMAN> GetSalesMan(string sSalesManSearchText)
+        public List<EMPLOYEE_MASTER> GetEmployee(string sEmployeeSearchText)
         {
-            List<SALESMAN> salesManList = new List<SALESMAN>();
-            string cmdText = "SELECT  SALESMANID, SALESMAN_NAME, START_DATE, END_DATE " +
-                             "FROM SALESMAN_MASTER " +
-                             "WHERE SALESMAN_NAME LIKE '%" + sSalesManSearchText + "%'";
+            List<EMPLOYEE_MASTER> EmployeeList = new List<EMPLOYEE_MASTER>();
+            string cmdText = "SELECT  EMPLOYEEID, EMPLOYEE_NAME, START_DATE, END_DATE " +
+                             "FROM EMPLOYEE_MASTER " +
+                             "WHERE EMPLOYEE_NAME LIKE '%" + sEmployeeSearchText + "%'";
             try
             {
                 using (SqlConnection con = new SqlConnection(@"Data Source = PC\SQLEXPRESS; Initial Catalog = SUBASHAGENCIES; Integrated Security = True"))
@@ -220,16 +222,48 @@ namespace Business_Logic_Layer
                         sdr = cmd.ExecuteReader();
                         while (sdr.Read())
                         {
-                            salesManList.Add(new SALESMAN
+                            EmployeeList.Add(new EMPLOYEE_MASTER
                             {
-                                SALESMANID = sdr.GetInt32(0),
-                                SALESMAN_NAME  = sdr.GetValue(1).ToString(),
+                                EMPLOYEEID = sdr.GetInt32(0),
+                                EMPLOYEE_NAME = sdr.GetValue(1).ToString(),
                                 START_DATE = DateTime.Parse(sdr.GetValue(2).ToString()),
                                 END_DATE = sdr.IsDBNull(3) ? default(DateTime?) : DateTime.Parse(sdr.GetValue(3).ToString()),
                                 UPDATED_ON = null
                             });
                         }
-                        return salesManList;
+                        return EmployeeList;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<EMPLOYEEDESIGNATION> GetDesignations()
+        {
+            List<EMPLOYEEDESIGNATION> EmployeeDesignations = new List<EMPLOYEEDESIGNATION>();
+            string cmdText = "SELECT DESIGNATIONID, DESIGNATIONNAME FROM EMPLOYEE_DESIGNATION ";
+            try
+            {
+                using (SqlConnection con = new SqlConnection(@"Data Source = PC\SQLEXPRESS; Initial Catalog = SUBASHAGENCIES; Integrated Security = True"))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(cmdText, con))
+                    {
+                        SqlDataReader sdr;
+                        sdr = cmd.ExecuteReader();
+                        while (sdr.Read())
+                        {
+                            EmployeeDesignations.Add(new EMPLOYEEDESIGNATION
+                            {
+                                DESIGNATIONID = sdr.GetInt32(0),
+                                DESIGNATIONNAME = sdr.GetValue(1).ToString(),
+                                UPDATED_ON = null
+                            });
+                        }
+                        return EmployeeDesignations;
                     }
                 }
             }

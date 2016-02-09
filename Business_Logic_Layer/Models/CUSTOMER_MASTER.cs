@@ -5,15 +5,17 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Business_Logic_Layer.Models
 {
     [Table("CUSTOMER_MASTER")]
-    public class CUSTOMER
+    public class CUSTOMER_MASTER
     {
         [Key]
-        public int ID { get; set; }
+        public int CUSTOMERID { get; set; }
 
+        [Required]
         [Display(Name ="Customer Name")]
         public string CUSTOMER_NAME { get; set; }
 
@@ -22,15 +24,15 @@ namespace Business_Logic_Layer.Models
         public string OUTLET_NAME { get; set; }
 
         [Display(Name = "Category")]
-        public int CATEGORYID { get; set; }
+        public int? CATEGORYID { get; set; }
         //public virtual List<CATEGORY> Category { get; set; }
 
         [Display(Name = "Type")]
-        public int TYPEID { get; set; }
+        public int? TYPEID { get; set; }
         //public virtual List<TYPE> Type { get; set; }
 
         [Display(Name = "Beat")]
-        public int BEATID { get; set; }
+        public int? BEATID { get; set; }
         //public virtual List<BEAT> Beat { get; set; }
 
         [Display(Name = "Address1")]
@@ -54,7 +56,7 @@ namespace Business_Logic_Layer.Models
         public string OTHER_DETAILS { get; set; }
 
         [Display(Name = "City")]
-        public int CITYID { get; set; }
+        public int? CITYID { get; set; }
         //public virtual List<CITY> City { get; set; }
              
         //[Display(Name = "Pincode")]
@@ -62,7 +64,8 @@ namespace Business_Logic_Layer.Models
         //public virtual List<CITYPINCODE> PinCode { get; set; }
 
         [Display(Name = "Status")]
-        public int STATUSID { get; set; }
+        [DefaultValue(1)]
+        public int? STATUSID { get; set; }
         //public virtual List<STATUS> Status { get; set;}
     }
 }

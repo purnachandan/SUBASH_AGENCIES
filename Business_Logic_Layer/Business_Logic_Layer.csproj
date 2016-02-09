@@ -51,15 +51,15 @@
   <ItemGroup>
     <Compile Include="Business_Logic.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\BEAT.cs" />
-    <Compile Include="Models\CATEGORY.cs" />
-    <Compile Include="Models\CITY.cs" />
-    <Compile Include="Models\CITYPINCODE.cs" />
-    <Compile Include="Models\CUSTOMER.cs" />
+    <Compile Include="Models\CUSTOMER_BEAT.cs" />
+    <Compile Include="Models\CUSTOMER_CATEGORY.cs" />
+    <Compile Include="Models\CUSTOMER_CITY.cs" />
+    <Compile Include="Models\CUSTOMER_MASTER.cs" />
     <Compile Include="Models\CUSTOMERDETAILS.cs" />
-    <Compile Include="Models\SALESMAN.cs" />
+    <Compile Include="Models\EMPLOYEE_MASTER.cs" />
+    <Compile Include="Models\EMPLOYEEDESIGNATION.cs" />
     <Compile Include="Models\STATUS.cs" />
-    <Compile Include="Models\TYPE.cs" />
+    <Compile Include="Models\CUSTOMER_TYPE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries.cs" />
   </ItemGroup>

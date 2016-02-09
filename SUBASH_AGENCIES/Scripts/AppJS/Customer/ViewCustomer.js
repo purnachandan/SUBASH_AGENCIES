@@ -11,7 +11,7 @@
         });        
     };
     $scope.ChangeStatus = function (outlet) {
-        $http.post('/Master/ChangeCustomerStatus?id=' + outlet.ID + "&status=" + ((outlet.STATUS=='ACTIVE') ? 1 :2)).success(function (data) {
+        $http.post('/Master/ChangeCustomerStatus?id=' + outlet.CUSTOMERID + "&status=" + ((outlet.STATUS == 'ACTIVE') ? 1 : 2)).success(function (data) {
             if (data == 1) {
                 var index = $scope.outletlist.indexOf(outlet, 0);
                 $scope.outletlist[index].STATUS = (outlet.STATUS == 'ACTIVE') ? 'INACTIVE' : 'ACTIVE'

@@ -8,8 +8,9 @@ namespace Business_Logic_Layer.Models
 {
     public class CUSTOMERDETAILS
     {
-        public int ID { get; set; }
-        public string NAME { get; set; }
+        public int CUSTOMERID { get; set; }
+
+        public string CUSTOMER_NAME { get; set; }
         
         public string OUTLET_NAME { get; set; }
         

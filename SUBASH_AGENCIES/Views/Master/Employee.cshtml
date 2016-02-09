@@ -1,0 +1,22 @@
+﻿<form ng-app="Employee" ng-controller="EmployeeController" name="EmployeeForm" novalidate>
+    <div>
+        <div>
+            @*<h1 ng-cloak>{{heading}}</h1>*@
+            <a href="#/AddEmployee/0">Add/Update</a>
+            <a href="#/ViewEmployee">View</a>
+        </div>
+        <div ng-view>
+
+        </div>
+    </div>
+</form>
+@section scripts {
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    @*<script src="~/Scripts/angular.intellisense.js"></script>*@
+}
+@section AppJS {
+    <script src="~/Scripts/AppJS/Employee/Employee.js"></script>
+    <script src="~/Scripts/AppJS/Employee/ViewEmployee.js"></script>
+    <script src="~/Scripts/AppJS/Employee/AddEmployee.js"></script>
+}

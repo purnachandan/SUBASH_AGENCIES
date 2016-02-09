@@ -51,10 +51,10 @@
             <tbody ng-repeat="outletdata in outletlist | filter: { 'OUTLET_NAME' :Outlet } | orderBy: 'OUTLET_NAME'">
                 <tr style="border-color:black;border-style:solid">
                     <td id="b1">
-                        <a style="padding-left:20px;font-size:medium;" ng-href="#/AddCustomer/{{outletdata.ID}}">{{outletdata.OUTLET_NAME}}</a>
+                        <a style="padding-left:20px;font-size:medium;" ng-href="#/AddCustomer/{{outletdata.CUSTOMERID}}">{{outletdata.OUTLET_NAME}}</a>
                     </td>
                     <td id="b1">
-                        <label style="padding-left:20px;">{{outletdata.NAME}}</label>
+                        <label style="padding-left:20px;">{{outletdata.CUSTOMER_NAME}}</label>
                     </td>
                     <td id="b1">
                         <label style="padding-left:20px;">{{outletdata.CATEGORYNAME}}</label>

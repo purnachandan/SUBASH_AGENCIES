@@ -225,8 +225,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="PartialViews\SalesMan\AddSalesMan.html" />
-    <Content Include="PartialViews\SalesMan\ViewSalesMan.html" />
+    <Content Include="PartialViews\Employee\AddEmployee.html" />
+    <Content Include="PartialViews\Employee\ViewEmployee.html" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -264,9 +264,9 @@
     <Content Include="Scripts\AppJS\AppJS.js" />
     <Content Include="Scripts\AppJS\Customer\AddCustomer.js" />
     <Content Include="Scripts\AppJS\Customer\ViewCustomer.js" />
-    <Content Include="Scripts\AppJS\SalesMan\AddSalesMan.js" />
-    <Content Include="Scripts\AppJS\SalesMan\SalesMan.js" />
-    <Content Include="Scripts\AppJS\SalesMan\ViewSalesMan.js" />
+    <Content Include="Scripts\AppJS\Employee\AddEmployee.js" />
+    <Content Include="Scripts\AppJS\Employee\Employee.js" />
+    <Content Include="Scripts\AppJS\Employee\ViewEmployee.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -1075,7 +1075,7 @@
     <None Include="readme.txt" />
     <Content Include="Views\Master\Customer.cshtml" />
     <Content Include="Scripts\version.json" />
-    <Content Include="Views\Master\SalesMan.cshtml" />
+    <Content Include="Views\Master\Employee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
